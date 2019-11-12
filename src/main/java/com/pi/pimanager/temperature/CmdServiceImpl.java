@@ -12,14 +12,15 @@ public class CmdServiceImpl implements CmdService {
     @Override
     @SneakyThrows
     public String runCommand(String cmd) {
-        Runtime run = Runtime.getRuntime();
-        Process pr = run.exec(cmd);
-        pr.waitFor();
-        BufferedReader buf = new BufferedReader(new InputStreamReader(pr.getInputStream()));
-        String line = "";
-        while ((line = buf.readLine()) != null) {
-            line += line;
+        Runtime runtime = Runtime.getRuntime();
+        Process process = runtime.exec(cmd);
+        process.waitFor();
+        BufferedReader buf = new BufferedReader(new InputStreamReader(process.getInputStream()));
+        StringBuilder commandOutput = new StringBuilder();
+        String bufferLine;
+        while ((bufferLine = buf.readLine()) != null) {
+            commandOutput.append(bufferLine);
         }
-        return line;
+        return commandOutput.toString();
     }
 }
