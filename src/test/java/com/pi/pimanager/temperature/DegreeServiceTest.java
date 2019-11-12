@@ -23,7 +23,7 @@ class DegreeServiceTest {
     }
 
     @Test
-    void shouldReturnHttpCode200OnGet() throws Exception {
+    void degree_whenGet_shouldReturnActualTemperature() throws Exception {
         mockMvc.perform(get("/api/degree"))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.degrees", is(60.0)));
