@@ -25,6 +25,12 @@
       <version>${project.version}</version>
     </dependency>
 
+    <dependency>
+      <groupId>com.pi</groupId>
+      <artifactId>system-metrics</artifactId>
+      <version>${project.version}</version>
+    </dependency>
+
   </dependencies>
 
 

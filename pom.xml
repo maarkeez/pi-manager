@@ -7,6 +7,7 @@
     <module>email</module>
 		<module>executor</module>
 		<module>temperature</module>
+		<module>system-metrics</module>
 	</modules>
   <parent>
 		<groupId>org.springframework.boot</groupId>
@@ -22,6 +23,7 @@
 
 	<properties>
 		<java.version>1.8</java.version>
+		<jna.version>5.5.0</jna.version>
 	</properties>
 
 	<dependencies>
@@ -45,6 +47,17 @@
 					<artifactId>junit-vintage-engine</artifactId>
 				</exclusion>
 			</exclusions>
+		</dependency>
+
+		<dependency>
+			<groupId>net.java.dev.jna</groupId>
+			<artifactId>jna</artifactId>
+			<version>${jna.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>net.java.dev.jna</groupId>
+			<artifactId>jna-platform</artifactId>
+			<version>${jna.version}</version>
 		</dependency>
 
 		<dependency>
