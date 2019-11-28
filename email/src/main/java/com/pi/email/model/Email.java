@@ -1,4 +1,4 @@
-package com.pi.email;
+package com.pi.email.model;
 
 import java.util.List;
 import lombok.Builder;

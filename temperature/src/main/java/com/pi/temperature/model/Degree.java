@@ -1,4 +1,4 @@
-package com.pi.temperature;
+package com.pi.temperature.model;
 
 import static lombok.AccessLevel.PRIVATE;
 
@@ -15,7 +15,7 @@ import lombok.ToString;
 @EqualsAndHashCode
 @AllArgsConstructor(access = PRIVATE)
 @NoArgsConstructor(access = PRIVATE)
-class Degree {
+public class Degree {
 
     private double degrees;
 

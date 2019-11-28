@@ -1,25 +1,27 @@
-package com.pi.temperature;
+package com.pi.temperature.api;
 
 import static org.hamcrest.Matchers.is;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
+import com.pi.temperature.model.Degree;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
-class DegreeServiceTest {
+class ApiDegreeTest {
 
     private MockMvc mockMvc;
 
     private final DegreeAdapter degreeAdapter = () -> Degree.builder().degrees(60.0).build();
-    private final DegreeService degreeService = new DegreeService(degreeAdapter);
+    private final ApiDegree apiDegree = new ApiDegree(degreeAdapter);
 
     @BeforeEach
     void beforeTest() {
-        mockMvc = MockMvcBuilders.standaloneSetup(degreeService).build();
+        mockMvc = MockMvcBuilders.standaloneSetup(apiDegree)
+                                 .build();
     }
 
     @Test

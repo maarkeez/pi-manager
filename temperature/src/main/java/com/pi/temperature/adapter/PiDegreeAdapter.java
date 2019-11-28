@@ -1,7 +1,10 @@
-package com.pi.temperature;
+package com.pi.temperature.adapter;
 
 import static java.lang.Double.parseDouble;
 
+import com.pi.temperature.api.DegreeAdapter;
+import com.pi.temperature.command.CmdService;
+import com.pi.temperature.model.Degree;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -13,7 +16,7 @@ class PiDegreeAdapter implements DegreeAdapter {
     private final CmdService cmdService;
 
     @Override
-    public Degree getDegrees() {
+    public Degree getDegrees () {
         final String EMPTY_STR = "";
 
         String measureTempOutput = cmdService.runCommand("vcgencmd measure_temp");

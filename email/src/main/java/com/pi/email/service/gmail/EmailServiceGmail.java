@@ -1,5 +1,7 @@
-package com.pi.email;
+package com.pi.email.service.gmail;
 
+import com.pi.email.model.Email;
+import com.pi.email.service.EmailService;
 import com.sun.mail.smtp.SMTPTransport;
 import java.util.Calendar;
 import javax.annotation.PostConstruct;

@@ -1,7 +1,9 @@
-package com.pi.temperature;
+package com.pi.temperature.adapter;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import com.pi.temperature.api.DegreeAdapter;
+import com.pi.temperature.command.CmdService;
 import org.junit.jupiter.api.Test;
 
 class PiDegreeAdapterTest {
@@ -15,8 +17,8 @@ class PiDegreeAdapterTest {
                 .isEqualTo(stubTemperature());
 
     }
-
-    private CmdService buildStubCmdService() {
+    
+    private CmdService buildStubCmdService () {
         final String commandOutput = "temp=" + stubTemperature() + "'C";
         final String expectedCommand = "vcgencmd measure_temp";
         return (cmd) -> {

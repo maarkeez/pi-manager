@@ -1,4 +1,4 @@
-package com.pi.email;
+package com.pi.email.service.gmail;
 
 import static lombok.AccessLevel.PACKAGE;
 
