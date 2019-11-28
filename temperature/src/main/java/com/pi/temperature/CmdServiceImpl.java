@@ -1,10 +1,9 @@
-package com.pi.pimanager.temperature;
-
-import lombok.SneakyThrows;
-import org.springframework.stereotype.Component;
+package com.pi.temperature;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
+import lombok.SneakyThrows;
+import org.springframework.stereotype.Component;
 
 @Component
 public class CmdServiceImpl implements CmdService {

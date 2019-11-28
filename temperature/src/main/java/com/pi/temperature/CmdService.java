@@ -1,4 +1,4 @@
-package com.pi.pimanager.temperature;
+package com.pi.temperature;
 
 public interface CmdService {
     String runCommand(String cmd);

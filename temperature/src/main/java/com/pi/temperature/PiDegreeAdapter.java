@@ -1,10 +1,10 @@
-package com.pi.pimanager.temperature;
+package com.pi.temperature;
+
+import static java.lang.Double.parseDouble;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-
-import static java.lang.Double.parseDouble;
 
 @Component
 @RequiredArgsConstructor(onConstructor = @__(@Autowired))

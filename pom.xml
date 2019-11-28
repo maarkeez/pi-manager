@@ -5,7 +5,9 @@
   <packaging>pom</packaging>
   <modules>
     <module>email</module>
-  </modules>
+		<module>executor</module>
+		<module>temperature</module>
+	</modules>
   <parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
@@ -54,13 +56,5 @@
 
 	</dependencies>
 
-	<build>
-		<plugins>
-			<plugin>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-maven-plugin</artifactId>
-			</plugin>
-		</plugins>
-	</build>
 
 </project>

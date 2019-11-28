@@ -1,4 +1,4 @@
-package com.pi.pimanager.temperature;
+package com.pi.temperature;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
