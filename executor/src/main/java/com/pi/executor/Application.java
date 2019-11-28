@@ -6,10 +6,10 @@ import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
 @ComponentScan( basePackages = "com.pi" )
-public class PiManagerApplication {
+public class Application {
 
 	public static void main(String[] args) {
-		SpringApplication.run(PiManagerApplication.class, args);
+    SpringApplication.run(Application.class, args);
 	}
 
 }

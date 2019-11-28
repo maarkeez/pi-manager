@@ -1,6 +1,5 @@
 package com.pi.email;
 
-
 import com.sun.mail.smtp.SMTPTransport;
 import java.util.Calendar;
 import javax.annotation.PostConstruct;
@@ -26,19 +25,27 @@ class EmailServiceGmail implements EmailService {
   private final GmailConfig gmailConfig;
   private Session session;
   private SMTPTransport smtpTransport;
+  private boolean connected = false;
   
-  @SneakyThrows
   @PostConstruct
   void init () {
-    session = Session.getInstance(gmailConfig.buildSmtpProperties(), buildAuthenticator());
-    smtpTransport = (SMTPTransport) session.getTransport("smtp");
-    smtpTransport.connect(gmailConfig.getGmailSmtpServer(), gmailConfig.getEmail(), gmailConfig.getPassword());
+    try {
+      session = Session.getInstance(gmailConfig.buildSmtpProperties(), buildAuthenticator());
+      smtpTransport = (SMTPTransport) session.getTransport("smtp");
+      smtpTransport.connect(gmailConfig.getGmailSmtpServer(), gmailConfig.getEmail(), gmailConfig.getPassword());
+      connected = true;
+    }
+    catch (Throwable e) {
+      log.error("Could not connect with user: {} and password: {}", gmailConfig.getEmail(), gmailConfig.getPassword());
+    }
   }
   
   @SneakyThrows
   @PreDestroy
   void tearDown () {
-    smtpTransport.close();
+    if (connected) {
+      smtpTransport.close();
+    }
   }
   
   private Authenticator buildAuthenticator () {
@@ -52,20 +59,23 @@ class EmailServiceGmail implements EmailService {
   @Override
   @SneakyThrows
   public void sendEmail ( Email email ) {
-    log.info("Sending email: {}", email);
-    try {
+    if (connected) {
+      log.info("Sending email: {}", email);
+      try {
       
-      Message msg = toMimeMessage(email);
+        Message msg = toMimeMessage(email);
       
-      smtpTransport.sendMessage(msg, msg.getAllRecipients());
+        smtpTransport.sendMessage(msg, msg.getAllRecipients());
       
-      log.info("Email sent, server response: {}", smtpTransport.getLastServerResponse());
+        log.info("Email sent, server response: {}", smtpTransport.getLastServerResponse());
       
+      }
+      catch (MessagingException e) {
+        log.error("Could not send email: {}. Cause: ", email, e);
+      }
+    } else {
+      log.error("Could not send email. Cause: server not connected");
     }
-    catch (MessagingException e) {
-      log.error("Could not send email: {}. Cause: ", email, e);
-    }
-    
   }
   
   private Message toMimeMessage ( Email email ) throws MessagingException {
