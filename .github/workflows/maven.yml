@@ -16,5 +16,7 @@ jobs:
     - name: Build with Maven
       run: mvn -B package --file pom.xml
     - name: Deploy artifacts
-      run: cd executor && mvn --settings ../settings.xml deploy -DskipTests -Dusername=maarkeez -Dpassword=${{ secrets.GITHUB_TOKEN }}
+      run:
+        - mvn clean install -DskipTests
+        - cd executor && mvn --settings ../settings.xml deploy -DskipTests -Dusername=maarkeez -Dpassword=${{ secrets.GITHUB_TOKEN }}
 
