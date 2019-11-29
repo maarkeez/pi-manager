@@ -16,4 +16,4 @@ jobs:
     - name: Build with Maven
       run: mvn -B package --file pom.xml
     - name: Deploy artifacts
-      run: mvn deploy -Dregistry=https://maven.pkg.github.com/maarkeez -Dtoken=GH_TOKEN
+      run: mvn deploy -Dregistry=https://maven.pkg.github.com/maarkeez -Dtoken=${{ secrets.GITHUB_TOKEN }}
