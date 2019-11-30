@@ -8,6 +8,7 @@
 		<module>executor</module>
 		<module>temperature</module>
 		<module>system-metrics</module>
+    <module>file-manager</module>
 	</modules>
   <parent>
 		<groupId>org.springframework.boot</groupId>
