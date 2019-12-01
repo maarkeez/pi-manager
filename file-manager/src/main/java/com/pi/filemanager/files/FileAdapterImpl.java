@@ -4,6 +4,7 @@ import static com.pi.filemanager.model.FileType.FILE;
 import static com.pi.filemanager.model.FileType.FOLDER;
 import static java.nio.file.Files.isDirectory;
 import static java.nio.file.Files.list;
+import static java.util.Comparator.comparing;
 import static java.util.stream.Collectors.toList;
 import static org.apache.commons.io.FileUtils.byteCountToDisplaySize;
 
@@ -23,6 +24,7 @@ public class FileAdapterImpl implements FileAdapter {
   public List<FileModel> listDirectory ( Path directory ) {
     
     return list(directory).map(this::toFileModel)
+                          .sorted(comparing(FileModel::getName))
                           .collect(toList());
   }
   
